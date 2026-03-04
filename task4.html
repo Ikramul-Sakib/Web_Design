@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Book Object</title>
+    <style>
+        body {text-align: center; margin-top: 50px; color: black; font-size: 50px;}
+    </style>
+</head>
+<body>
+    <script>
+        let book = {
+            title: "The Great Gatsby",
+            author: "F. Scott Fitzgerald",
+            price: 15.99
+        };
+
+        console.log("Title: " + book.title);
+        console.log("Author: " + book.author);
+        console.log("Price: $" + book.price);
+
+        book.publisher = "Scribner";
+
+        console.log("Updated Object:", book);
+        document.write("Title: " + book.title + "<br>");
+        document.write("Author: " + book.author + "<br>");
+        document.write("Price($):" + book.price + "<br>");
+        document.write("Publisher: " + book.publisher);
+    </script>
+</body>
+</html>

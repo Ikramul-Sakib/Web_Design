@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Sum</title>
+     <style>
+        body {text-align: center; margin-top: 50px;}
+        h1 { color: darkslateblue }
+    </style>
+</head>
+<body>
+    <script>
+        let ar = [10, 20, 30, 40, 50];
+        let s = 0;
+
+        console.log("Array Elements:");
+        for (let i = 0; i < ar.length; i++) {
+            console.log("Element " + (i+1) + ": " + ar[i]);
+            s += ar[i];
+            document.write("<h1>Element " + ": " + ar[i] + "</h1>");
+        }
+
+        document.write("<h1>Total Sum: " + s + "</h1>");
+    </script>
+</body>
+</html>
