@@ -43,6 +43,40 @@
             text-decoration: none;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: #ff4757;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
         .logout-btn {
             padding: 10px 25px;
             background: #ff4757;
@@ -168,6 +202,28 @@
         .gallery-overlay p {
             font-size: 14px;
             opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-btn {
+            padding: 8px 15px;
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+            width: fit-content;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #ff6b81;
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.95);
         }
 
         .upload-card {
@@ -225,7 +281,13 @@
         <a href="welcome_page.html" class="logo">
             <span>🍔</span> Foodies
         </a>
-        <a href="log_in_page.html" class="logout-btn">Logout</a>
+        <div class="header-actions">
+            <div class="cart-icon" onclick="alert('Proceed to checkout with ' + cartItemsCount + ' items.')">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+            <a href="log_in_page.html" class="logout-btn">Logout</a>
+        </div>
     </header>
 
     <section class="hero">
@@ -254,6 +316,7 @@
                 <div class="gallery-overlay">
                     <h3>Pizza</h3>
                     <p>BBQ P</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(event, 'Pizza')">Add to Cart</button>
                 </div>
             </div>
 
@@ -263,6 +326,7 @@
                 <div class="gallery-overlay">
                     <h3>Burger</h3>
                     <p>Double Cheeseburger</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(event, 'Burger')">Add to Cart</button>
                 </div>
             </div>
 
@@ -272,6 +336,7 @@
                 <div class="gallery-overlay">
                     <h3>Avocado Toast</h3>
                     <p>Healthy breakfast with poached egg.</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(event, 'Avocado Toast')">Add to Cart</button>
                 </div>
             </div>
 
@@ -281,6 +346,8 @@
                 <div class="gallery-overlay">
                     <h3>Spaghetti Bolognese</h3>
                     <p>Rich and hearty meat sauce over pasta.</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(event, 'Spaghetti Bolognese')">Add to
+                        Cart</button>
                 </div>
             </div>
 
@@ -290,11 +357,32 @@
                 <div class="gallery-overlay">
                     <h3>Berry Cheesecake</h3>
                     <p>Sweet and creamy with fresh berries.</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(event, 'Berry Cheesecake')">Add to Cart</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        let cartItemsCount = 0;
+
+        function addToCart(event, itemName) {
+            // Prevent the click from propagating
+            event.preventDefault();
+            event.stopPropagation();
+
+            cartItemsCount++;
+
+            const cartCountElement = document.getElementById('cartCount');
+            cartCountElement.innerText = cartItemsCount;
+
+            // Pop animation
+            cartCountElement.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                cartCountElement.style.transform = 'scale(1)';
+            }, 200);
+        }
+    </script>
 </body>
 
 </html>
